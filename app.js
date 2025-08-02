@@ -10,10 +10,10 @@ let paragrafo = document.querySelector('p');
 paragrafo.innerHTML = 'Escolha um número entre 1 e 10 e tente adivinhar o número secreto!';
 */
 
-
 function exibirTextoNaTela(tag, texto) {
   let campo = document.querySelector(tag);
   campo.innerHTML = texto;
+  responsiveVoice.speak(texto, "Brazilian Portuguese Female", { rate: 1.2 });
 }
 function exibirMensagemInicial() {
   exibirTextoNaTela("h1", "Jogo do número secreto");
@@ -52,14 +52,14 @@ function gerarNumeroAleatorio() {
   if (quantidadeDeElementosNaLista == numeroLimite) {
     listaDeNumerosSorteados = [];
     return gerarNumeroAleatorio();
-
-    }  if (listaDeNumerosSorteados.includes(numeroEscolhido)) {
+  }
+  if (listaDeNumerosSorteados.includes(numeroEscolhido)) {
     return gerarNumeroAleatorio();
   } else {
     listaDeNumerosSorteados.push(numeroEscolhido);
     return numeroEscolhido;
   }
-};
+}
 
 function limparCampo() {
   chute = document.querySelector("input");
@@ -74,4 +74,4 @@ function reiniciarJogo() {
 
   document.getElementById("reiniciar").setAttribute("disabled", true);
   limparCampo();
-};
+}
